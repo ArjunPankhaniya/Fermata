@@ -12,3 +12,7 @@ local.properties
 google-services.json
 TODO
 res/*.jks
+# Ignore Android build folders and files
+/build
+/fermata/build
+/auto/build
