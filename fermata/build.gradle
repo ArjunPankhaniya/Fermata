@@ -71,7 +71,7 @@ android {
 
         auto {
             dimension "version"
-            applicationIdSuffix '.auto' + project.getProperties().getOrDefault('APP_ID_SFX', '')
+            applicationIdSuffix '.Mauto' + project.getProperties().getOrDefault('APP_ID_SFX', '')
             resValue "string", "app_name", "@string/app_name_auto"
             resValue "string", "media_service_name", "@string/media_service_name_auto"
             resValue "drawable", "media_service_icon", "@drawable/media_service"
@@ -107,5 +107,5 @@ dependencies {
     implementation 'com.google.android.play:app-update:2.1.0'
     implementation 'androidx.tvprovider:tvprovider:1.1.0'
     implementation 'androidx.annotation:annotation:1.9.1'
-    implementation "androidx.car.app:app:1.4.0"
+    implementation "androidx.car.app:app:1.7.0"
 }

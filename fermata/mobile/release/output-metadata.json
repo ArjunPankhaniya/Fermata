@@ -1,0 +1,37 @@
+{
+  "version": 3,
+  "artifactType": {
+    "type": "APK",
+    "kind": "Directory"
+  },
+  "applicationId": "me.aap.fermata",
+  "variantName": "mobileRelease",
+  "elements": [
+    {
+      "type": "SINGLE",
+      "filters": [],
+      "attributes": [],
+      "versionCode": 254,
+      "versionName": "1.9.10",
+      "outputFile": "fermata-1.9.10-mobile-release.apk"
+    }
+  ],
+  "elementType": "File",
+  "baselineProfiles": [
+    {
+      "minApi": 28,
+      "maxApi": 30,
+      "baselineProfiles": [
+        "baselineProfiles/1/fermata-1.9.10-mobile-release.dm"
+      ]
+    },
+    {
+      "minApi": 31,
+      "maxApi": 2147483647,
+      "baselineProfiles": [
+        "baselineProfiles/0/fermata-1.9.10-mobile-release.dm"
+      ]
+    }
+  ],
+  "minSdkVersionForDexing": 23
+}
