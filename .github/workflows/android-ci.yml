@@ -1,5 +1,5 @@
 # Workflow ka naam
-name: Android CI Build (Debug)
+name: Android CI Build (Release Variant)
 
 # Yeh kab chalega
 on:
@@ -30,16 +30,16 @@ jobs:
       - name: Grant execute permission to gradlew
         run: chmod +x gradlew
 
-      # Step 4: Debug APK banana (Yahaan badlav kiya gaya hai)
-      # Hum 'assembleAutoRelease' ki jagah 'assembleAutoDebug' ka upyog kar rahe hain
-      - name: Build Debug APK
-        run: ./gradlew assembleAutoDebug --no-daemon
+      # Step 4: Release APK banana (Yahaan badlav kiya gaya hai)
+      # Yeh 'release' variant banayega aur use ek temporary debug key se sign kar dega
+      - name: Build Release APK (Debug Signed)
+        run: ./gradlew assembleAutoRelease --no-daemon
 
-      # Step 5: Debug APK ko upload karna (Yahaan bhi badlav kiya gaya hai)
-      - name: Upload Debug APK
+      # Step 5: Release APK ko upload karna (Yahaan bhi badlav kiya gaya hai)
+      - name: Upload Release APK
         uses: actions/upload-artifact@v4
         with:
           # Download ki jaane wali file ka naam
-          name: fermata-debug-apk
-          # Debug APK ka path
-          path: '**/build/outputs/apk/auto/debug/*.apk'
+          name: fermata-release-apk
+          # Release APK ka path
+          path: '**/build/outputs/apk/auto/release/*.apk'
