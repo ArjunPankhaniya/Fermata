@@ -1,0 +1,45 @@
+# Workflow ka naam
+name: Android CI Build (Debug)
+
+# Yeh kab chalega
+on:
+  push:
+    branches: [ "master", "main" ]
+  pull_request:
+    branches: [ "master", "main" ]
+
+jobs:
+  build:
+    # Virtual machine
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Code ko checkout karna
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Step 2: Java (JDK 17) set up karna
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: gradle
+
+      # Step 3: gradlew ko permission dena
+      - name: Grant execute permission to gradlew
+        run: chmod +x gradlew
+
+      # Step 4: Debug APK banana (Yahaan badlav kiya gaya hai)
+      # Hum 'assembleAutoRelease' ki jagah 'assembleAutoDebug' ka upyog kar rahe hain
+      - name: Build Debug APK
+        run: ./gradlew assembleAutoDebug --no-daemon
+
+      # Step 5: Debug APK ko upload karna (Yahaan bhi badlav kiya gaya hai)
+      - name: Upload Debug APK
+        uses: actions/upload-artifact@v4
+        with:
+          # Download ki jaane wali file ka naam
+          name: fermata-debug-apk
+          # Debug APK ka path
+          path: '**/build/outputs/apk/auto/debug/*.apk'
